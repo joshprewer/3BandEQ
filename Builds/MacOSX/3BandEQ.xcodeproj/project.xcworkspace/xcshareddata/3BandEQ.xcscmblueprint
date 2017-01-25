@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A32AB0C7AEC59BA2C6CDB8DEC91E588AEB2DD1B2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A32AB0C7AEC59BA2C6CDB8DEC91E588AEB2DD1B2" : 0,
+    "ECE482AC3DF26E8AA4C995C08DC51406D7FAB0C0" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "69864F87-495C-4DBF-B554-90F2B086D6B2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A32AB0C7AEC59BA2C6CDB8DEC91E588AEB2DD1B2" : "3BandEQ\/",
+    "ECE482AC3DF26E8AA4C995C08DC51406D7FAB0C0" : "Flanger\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "3BandEQ",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Builds\/MacOSX\/3BandEQ.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/joshprewer\/3BandEQ.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A32AB0C7AEC59BA2C6CDB8DEC91E588AEB2DD1B2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/joshprewer\/Flanger.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ECE482AC3DF26E8AA4C995C08DC51406D7FAB0C0"
+    }
+  ]
+}
