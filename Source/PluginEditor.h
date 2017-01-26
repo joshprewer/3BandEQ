@@ -35,7 +35,8 @@ private:
     _3bandEqAudioProcessor& processor;
     
     Slider frequencySlider;
-
+    Label frequencyLabel;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (_3bandEqAudioProcessorEditor)
 };
 

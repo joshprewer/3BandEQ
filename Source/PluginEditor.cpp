@@ -19,6 +19,12 @@ _3bandEqAudioProcessorEditor::_3bandEqAudioProcessorEditor (_3bandEqAudioProcess
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
+    
+    frequencySlider.setSliderStyle(Slider::RotaryVerticalDrag);
+    frequencySlider.setRange(20, 20000);
+    
+    addAndMakeVisible(&frequencySlider);
+    
 }
 
 _3bandEqAudioProcessorEditor::~_3bandEqAudioProcessorEditor()
@@ -39,4 +45,6 @@ void _3bandEqAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
+    
+    frequencySlider.setBounds(40, 40, 100, 100);
 }
