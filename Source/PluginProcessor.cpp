@@ -82,7 +82,11 @@ void _3bandEqAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     
     toneL.initialiseWave(500, 0.25, 44100, ToneGenerator::NOISE);
     toneR.initialiseWave(500, 0.25, 44100, ToneGenerator::SINE);
-    filter.setParameters(2000, 1, 0.707, BiquadFilter::LOWPASS);
+    
+    freq = 10000;
+    gain = 5;
+    q = 10;
+    control = 0;
 }
 
 void _3bandEqAudioProcessor::releaseResources()
@@ -130,21 +134,24 @@ void _3bandEqAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer
     for (int i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         float* channelData = buffer.getWritePointer (channel);
+        
         float output;
         float input;
+        
+        BiquadFilter::filterType type = static_cast<BiquadFilter::filterType>(control);
+        
+        filter.setParameters(freq, gain, q, type);
         
         for (int i = 0; i < buffer.getNumSamples(); i++)
         {
             if (channel == 0)
             {
-//                input = toneL.getValue();
-//                filter.addSample(input);
-                output = toneL.getValue();
+                input = toneL.getValue();
+                filter.addSample(input);
+                output = filter.getSample();
                 
                 channelData[i] = output;
             }

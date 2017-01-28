@@ -19,13 +19,16 @@
 //==============================================================================
 /**
 */
-class _3bandEqAudioProcessor  : public AudioProcessor
+class _3bandEqAudioProcessor  : public AudioProcessor 
 {
 public:
     //==============================================================================
     _3bandEqAudioProcessor();
     ~_3bandEqAudioProcessor();
-
+    
+    double freq, gain, q;
+    int control;
+    
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;

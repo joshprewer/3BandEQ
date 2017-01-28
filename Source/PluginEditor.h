@@ -18,7 +18,7 @@
 //==============================================================================
 /**
 */
-class _3bandEqAudioProcessorEditor : public AudioProcessorEditor
+class _3bandEqAudioProcessorEditor : public AudioProcessorEditor, private Slider::Listener, private ComboBox::Listener
 {
 public:
     _3bandEqAudioProcessorEditor (_3bandEqAudioProcessor&);
@@ -32,10 +32,22 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     
+    void sliderValueChanged (Slider* slider) override;
+    void comboBoxChanged (ComboBox* comboBox) override;
+    
     _3bandEqAudioProcessor& processor;
     
     Slider frequencySlider;
-
+    Label frequencyLabel;
+    
+    Slider gainSlider;
+    Label gainLabel;
+    
+    Slider qSlider;
+    Label qLabel;
+    
+    ComboBox filterMenu;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (_3bandEqAudioProcessorEditor)
 };
 
