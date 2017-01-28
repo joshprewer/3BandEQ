@@ -82,6 +82,10 @@ void _3bandEqAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     
     toneL.initialiseWave(500, 0.25, 44100, ToneGenerator::NOISE);
     toneR.initialiseWave(500, 0.25, 44100, ToneGenerator::SINE);
+    
+    freq = 10000;
+    gain = 5;
+    q = 10;
 }
 
 void _3bandEqAudioProcessor::releaseResources()
@@ -136,7 +140,7 @@ void _3bandEqAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer
         float output;
         float input;
         
-        filter.setParameters(freq, 4, 10, BiquadFilter::PEAK);
+        filter.setParameters(freq, gain, q, BiquadFilter::PEAK);
         
         for (int i = 0; i < buffer.getNumSamples(); i++)
         {

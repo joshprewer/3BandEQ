@@ -26,8 +26,9 @@ public:
     _3bandEqAudioProcessor();
     ~_3bandEqAudioProcessor();
     
-    float freq;
-
+    double freq, gain, q;
+    
+    
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
