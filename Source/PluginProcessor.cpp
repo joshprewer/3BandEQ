@@ -86,6 +86,7 @@ void _3bandEqAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     freq = 10000;
     gain = 5;
     q = 10;
+    control = 0;
 }
 
 void _3bandEqAudioProcessor::releaseResources()
@@ -140,7 +141,9 @@ void _3bandEqAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer
         float output;
         float input;
         
-        filter.setParameters(freq, gain, q, BiquadFilter::PEAK);
+        BiquadFilter::filterType type = static_cast<BiquadFilter::filterType>(control);
+        
+        filter.setParameters(freq, gain, q, type);
         
         for (int i = 0; i < buffer.getNumSamples(); i++)
         {

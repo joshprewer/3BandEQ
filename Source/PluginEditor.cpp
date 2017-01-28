@@ -56,6 +56,15 @@ _3bandEqAudioProcessorEditor::_3bandEqAudioProcessorEditor (_3bandEqAudioProcess
     qLabel.setText("Q", NotificationType::dontSendNotification);
     qLabel.setJustificationType(Justification::centred);
     
+    filterMenu.addItem("Peak", 1);
+    filterMenu.addItem("Lowpass", 2);
+    filterMenu.addItem("Highpass", 3);
+    filterMenu.addItem("Highshelf", 4);
+    filterMenu.addItem("Lowshelf", 5);
+    filterMenu.setSelectedId(0);
+    filterMenu.addListener(this);
+    
+    addAndMakeVisible(&filterMenu);
 }
 
 _3bandEqAudioProcessorEditor::~_3bandEqAudioProcessorEditor()
@@ -80,12 +89,17 @@ void _3bandEqAudioProcessorEditor::resized()
     frequencySlider.setBounds(40, 40, 100, 100);
     gainSlider.setBounds(40, 170, 100, 100);
     qSlider.setBounds(170, 40, 100, 100);
+    filterMenu.setBounds(170, 170, 100, 100);
 }
-
 
 void _3bandEqAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
     processor.freq = frequencySlider.getValue();
     processor.gain = gainSlider.getValue();
     processor.q = qSlider.getValue();
+}
+
+void _3bandEqAudioProcessorEditor::comboBoxChanged (ComboBox* comboBox)
+{
+    processor.control = filterMenu.getSelectedId() - 1;
 }

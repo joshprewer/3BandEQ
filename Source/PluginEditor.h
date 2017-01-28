@@ -18,7 +18,7 @@
 //==============================================================================
 /**
 */
-class _3bandEqAudioProcessorEditor : public AudioProcessorEditor, private Slider::Listener
+class _3bandEqAudioProcessorEditor : public AudioProcessorEditor, private Slider::Listener, private ComboBox::Listener
 {
 public:
     _3bandEqAudioProcessorEditor (_3bandEqAudioProcessor&);
@@ -33,6 +33,7 @@ private:
     // access the processor object that created it.
     
     void sliderValueChanged (Slider* slider) override;
+    void comboBoxChanged (ComboBox* comboBox) override;
     
     _3bandEqAudioProcessor& processor;
     
@@ -44,6 +45,8 @@ private:
     
     Slider qSlider;
     Label qLabel;
+    
+    ComboBox filterMenu;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (_3bandEqAudioProcessorEditor)
 };
