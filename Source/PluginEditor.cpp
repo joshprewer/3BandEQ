@@ -21,10 +21,12 @@ _3bandEqAudioProcessorEditor::_3bandEqAudioProcessorEditor (_3bandEqAudioProcess
     setSize (400, 300);
     
     frequencySlider.setSliderStyle(Slider::RotaryVerticalDrag);
-    frequencySlider.setRange(20, 20000);
+    frequencySlider.setRange(20, 20000, 1);
+    frequencySlider.setValue(10000);
+    frequencySlider.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    frequencySlider.addListener(this);
     
     addAndMakeVisible(&frequencySlider);
-    
 }
 
 _3bandEqAudioProcessorEditor::~_3bandEqAudioProcessorEditor()
@@ -47,4 +49,10 @@ void _3bandEqAudioProcessorEditor::resized()
     // subcomponents in your editor..
     
     frequencySlider.setBounds(40, 40, 100, 100);
+}
+
+
+void _3bandEqAudioProcessorEditor::sliderValueChanged(Slider* slider)
+{
+    processor.freq = frequencySlider.getValue();
 }

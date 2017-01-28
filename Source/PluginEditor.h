@@ -18,7 +18,7 @@
 //==============================================================================
 /**
 */
-class _3bandEqAudioProcessorEditor : public AudioProcessorEditor
+class _3bandEqAudioProcessorEditor : public AudioProcessorEditor, private Slider::Listener
 {
 public:
     _3bandEqAudioProcessorEditor (_3bandEqAudioProcessor&);
@@ -31,6 +31,8 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
+    
+    void sliderValueChanged (Slider* slider) override;
     
     _3bandEqAudioProcessor& processor;
     

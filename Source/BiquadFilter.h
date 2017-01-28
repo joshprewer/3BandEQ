@@ -23,6 +23,7 @@ public:
     
     void setParameters(double frequency, double gain, double q, filterType filter);
     
+    
     void addSample(float sample);
 
 private:
