@@ -79,9 +79,11 @@ void _3bandEqAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
+
+	SR = getSampleRate();
     
-    toneL.initialiseWave(500, 0.25, 44100, ToneGenerator::NOISE);
-    toneR.initialiseWave(500, 0.25, 44100, ToneGenerator::SINE);
+    toneL.initialiseWave(500, 0.25, SR, ToneGenerator::NOISE);
+    toneR.initialiseWave(500, 0.25, SR, ToneGenerator::NOISE);
     
     freq = 10000;
     gain = 5;
@@ -143,18 +145,25 @@ void _3bandEqAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer
         
         BiquadFilter::filterType type = static_cast<BiquadFilter::filterType>(control);
         
-        filter.setParameters(freq, gain, q, type);
+        filterL.setParameters(freq, gain, q, type);
+		filterR.setParameters(freq, gain, q, type);
         
         for (int i = 0; i < buffer.getNumSamples(); i++)
         {
             if (channel == 0)
             {
                 input = toneL.getValue();
-                filter.addSample(input);
-                output = filter.getSample();
-                
-                channelData[i] = output;
+                filterL.addSample(input);
+                output = filterL.getSample();                           
             }
+			else
+			{
+				input = toneR.getValue();
+				filterR.addSample(input);
+				output = filterR.getSample();
+			}
+
+			channelData[i] = output;
         }
 
         // ..do something to the data...

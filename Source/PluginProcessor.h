@@ -63,9 +63,12 @@ public:
 
 private:
     
-    BiquadFilter filter;
+    BiquadFilter filterL;
+	BiquadFilter filterR;
     ToneGenerator toneL;
     ToneGenerator toneR;
+
+	double SR;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (_3bandEqAudioProcessor)
