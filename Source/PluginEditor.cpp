@@ -59,8 +59,6 @@ _3bandEqAudioProcessorEditor::_3bandEqAudioProcessorEditor (_3bandEqAudioProcess
     filterMenu.addItem("Peak", 1);
     filterMenu.addItem("Lowpass", 2);
     filterMenu.addItem("Highpass", 3);
-    filterMenu.addItem("Highshelf", 4);
-    filterMenu.addItem("Lowshelf", 5);
     filterMenu.setSelectedId(0);
     filterMenu.addListener(this);
     
